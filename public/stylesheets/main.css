@@ -1,13 +1,107 @@
 body {
-  background-color: #d0e4fe;
+  background-color: #fff;
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.5;
+  box-sizing: border-box;
+/*  width: 100%;
+  height: 100%;*/
+}
+
+.header {
+  width: 100%;
+  height: 50px;
+  padding: 25px 0;
+  background: #4b41ff;
 }
 
 h1 {
-  color: orange;
+  color: #333;
   text-align: center;
+  margin: 0;
+  font-weight: 400;
 }
 
-p {
-  font-family: "Courier New";
-  font-size: 30px;
+.container {
+  width: 49%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.text-inner {
+  padding: 50px;
+}
+
+.search-wrapper {
+  margin: 0 auto 20px;
+}
+
+svg {
+  color: #fff;
+  fill: #fff;
+  margin: 0 10px 0 25px;
+}
+
+input.search {
+  background: none;
+  border: none;
+  outline: none;
+  width: 85%;
+  height: 50px;
+  transition: border-color 0.2s;
+  color: #fff;
+  font-size: 32px;
+  vertical-align: top;
+}
+
+input::focus {
+  color: #fff;
+}
+
+::-webkit-input-placeholder {
+  color: #fff;
+  font-size: 32px;
+}
+
+button {
+  border-radius: 0;
+  border: none;
+  height: 100%;
+  padding: 16px;
+  font-size: 16px;
+  position: relative;
+  left: -5px;
+  cursor: pointer;
+  color: #333;
+  background: #fff;
+  vertical-align: top;
+  display: none;
+}
+
+.map-container {
+  width: 49%;
+  display: inline-block;
+  height: 100%;
+}
+
+#map {
+  display: block;
+  width: 100%;
+  height: 400px;
+  background-color: grey;
+}
+
+.name {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.temp-display {
+  font-size: 50px;
+}
+
+.weather {
+  text-transform: capitalize;
+  margin: 0px 0 20px;
 }

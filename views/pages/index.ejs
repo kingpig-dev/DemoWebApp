@@ -2,22 +2,48 @@
 <html>
 
 <head>
+  <title>Weather App</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
   <link rel="stylesheet" type="text/css" href="stylesheets/main.css"/>
+  <link rel="stylesheet" type="text/css" href="stylesheets/weather-icons.min.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+  <script>var apiKey = '<%= process.env.API_KEY %>';</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRdgYGiIUL5yZRpvWfPADrzJV5Ffu9NTQ&callback=initMap">
+  </script>
+
   <script src="/js/main.js"></script>
 </head>
 
 <body>
 
-  <h1>YOYO web apps are so cool</h1>
+  <div class="header">
+    <svg class="svgIcon-use" width="50" height="50" viewBox="0 0 25 25"><path d="M20.067 18.933l-4.157-4.157a6 6 0 1 0-.884.884l4.157 4.157a.624.624 0 1 0 .884-.884zM6.5 11c0-2.62 2.13-4.75 4.75-4.75S16 8.38 16 11s-2.13 4.75-4.75 4.75S6.5 13.62 6.5 11z"></path></svg>
+    <input id="search-box" class="search" type="text" placeholder="Search by name or zip code" />
+    <button id="search-button" type="button" onclick="searchWeather()">Search</button>
+  </div>
+  <div class="map-container">
+    <div id="map"></div>
+  </div>
+  <div class="container">
+    <div class="text-inner">
+      <div class="city name"></div>
+      <div class="temp temp-display"></div>
+      <div class="weather"></div>
+      <div class="max-container">
+        High <span class="max"></span>
+      </div>
+      <div class="min-container">
+        Low <span class="min"></span>
+      </div>
+      <div class="forecast">
+        <h2>5 Day Forecast</h2>
+        <div class="dayOne"></div>
+      </div>
 
-  <p id="demo">
-    This is me testing out a lil html file
-  </p>
-
-  <button type="button" onclick="myFunction()">
-    Try it
-  </button>
+    </div>
+  </div>
+  <div class="error-message"></div>
 
 </body>
-
 </html>
