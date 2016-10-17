@@ -25,7 +25,7 @@ function initMap( lat, long ) {
 }
 
 function getWeather( searchQuery ) {
-  var url = 'http://api.openweathermap.org/data/2.5/weather?';
+  var url = 'https://api.openweathermap.org/data/2.5/weather?';
   var params = {
     APPID: apiKey,
     units: 'imperial'
@@ -80,7 +80,7 @@ function searchForecast() {
 }
 
 function getForecast( searchQuery ) {
-  var url = 'http://api.openweathermap.org/data/2.5/forecast/daily?';
+  var url = 'https://api.openweathermap.org/data/2.5/forecast/daily?';
   var params = {
     APPID: apiKey,
     units: 'imperial'
