@@ -30,7 +30,7 @@ function searchWeather() {
 }
 
 function getWeather( searchQuery ) {
-  let url = 'https://api.openweathermap.org/data/2.5/weather?';
+  let url = 'http://api.openweathermap.org/data/2.5/weather?';
   let params = {
     APPID: apiKey,
     units: 'imperial'
@@ -80,7 +80,7 @@ function searchForecast() {
 }
 
 function getForecast( searchQuery ) {
-  let url = 'https://api.openweathermap.org/data/2.5/forecast/daily?';
+  let url = 'http://api.openweathermap.org/data/2.5/forecast/daily?';
   let params = {
     APPID: apiKey,
     units: 'imperial'
