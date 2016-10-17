@@ -1,3 +1,5 @@
+// NOTE: Heroku App doesn't work with HTTPS, only HTTP
+
 $(document).ready(function() {
   getWeather();
   getForecast();
