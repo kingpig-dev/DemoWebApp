@@ -13,20 +13,25 @@ $(document).ready(function() {
 });
 
 function initMap( lat, long ) {
-  var uluru = { lat: lat, lng: long };
-  var map = new google.maps.Map(document.getElementById('map'), {
+  let uluru = { lat: lat, lng: long };
+  let map = new google.maps.Map(document.getElementById('map'), {
     zoom: 7,
     center: uluru
   });
-  var marker = new google.maps.Marker({
+  let marker = new google.maps.Marker({
     position: uluru,
     map: map
   });
 }
 
+function searchWeather() {
+  let searchQuery = $('.search').val(); // grab value from search input
+  getWeather(searchQuery);
+}
+
 function getWeather( searchQuery ) {
-  var url = 'https://api.openweathermap.org/data/2.5/weather?';
-  var params = {
+  let url = 'http://api.openweathermap.org/data/2.5/weather?';
+  let params = {
     APPID: apiKey,
     units: 'imperial'
   };
@@ -58,8 +63,8 @@ function getWeather( searchQuery ) {
     $('.temp').text(temp);
     $('.max').text(max);
     $('.min').text(min);
-    $('.humidity').text('Humidity ' + data.main.humidity + '%');
-    $('.wind').text('Wind ' + data.wind.speed + ' mph');
+    $('.humidity').text('Humidity: ' + data.main.humidity + '%');
+    $('.wind').text('Wind: ' + data.wind.speed + ' mph');
 
     getIcon( data.weather[0].icon );
 
@@ -69,19 +74,14 @@ function getWeather( searchQuery ) {
   }
 }
 
-function searchWeather() {
-  var searchQuery = $('.search').val(); // grab value from search input
-  getWeather(searchQuery);
-}
-
 function searchForecast() {
-  var searchQuery = $('.search').val();
+  let searchQuery = $('.search').val();
   getForecast(searchQuery);
 }
 
 function getForecast( searchQuery ) {
-  var url = 'https://api.openweathermap.org/data/2.5/forecast/daily?';
-  var params = {
+  let url = 'http://api.openweathermap.org/data/2.5/forecast/daily?';
+  let params = {
     APPID: apiKey,
     units: 'imperial'
   };
@@ -126,8 +126,8 @@ function getForecast( searchQuery ) {
 }
 
 function getDayOfWeek() {
-  var d = new Date();
-  var weekday = new Array(7);
+  let d = new Date();
+  let weekday = new Array(7);
   weekday[0] = "SUN";
   weekday[1] = "MON";
   weekday[2] = "TUE";
@@ -136,12 +136,12 @@ function getDayOfWeek() {
   weekday[5] = "FRI";
   weekday[6] = "SAT";
 
-  var today = weekday[d.getDay()];
-  var day1 = weekday[d.getDay() + 1];
-  var day2 = weekday[d.getDay() + 2];
-  var day3 = weekday[d.getDay() + 3];
-  var day4 = weekday[d.getDay() + 4];
-  var day5 = weekday[d.getDay() + 5];
+  let today = weekday[d.getDay()];
+  let day1 = weekday[d.getDay() + 1];
+  let day2 = weekday[d.getDay() + 2];
+  let day3 = weekday[d.getDay() + 3];
+  let day4 = weekday[d.getDay() + 4];
+  let day5 = weekday[d.getDay() + 5];
   $('.today').text(today);
   $('.day1').text(day1);
   $('.day2').text(day2);
@@ -156,7 +156,7 @@ function getTime() {
   let minutes = currentdate.getMinutes();
   let ampm;
 
-  if ( hours >= 12 ) {
+  if ( hours > 12 ) {
     ampm = 'PM'
     hours -= 12;
   } else {
@@ -177,6 +177,7 @@ function getIcon( data ) {
   let $icon = $('.icon');
 
   switch (data) {
+    // day
     case '01d':
     $icon.addClass('wi wi-day-sunny');
     break;
@@ -204,7 +205,7 @@ function getIcon( data ) {
     case '50d':
     $icon.addClass('wi wi-fog');
     break;
-
+    // night
     case '01n':
     $icon.addClass('wi wi-night-clear');
     break;
