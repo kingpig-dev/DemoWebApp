@@ -46,11 +46,14 @@ function getWeather( searchQuery ) {
   $.ajax(url + $.param( params ), {
     success: ( data ) => onSuccess( data ),
     error: function (error) {
-      $('.error-message').text('An error occurred!');
+      $('.error-message').text('City not found, try again!');
     }
   });
 
   function onSuccess( data ) {
+
+    $('.error-message').empty();
+
     let temp = Math.round(data.main.temp);
     let max = Math.round(data.main.temp_max);
     let min = Math.round(data.main.temp_min);
@@ -128,7 +131,9 @@ function getForecast( searchQuery ) {
 }
 
 function getDayOfWeek() {
-  let d = new Date();
+  let date = new Date();
+  let day = date.getDay();
+  // let day = 6;
   let weekday = new Array(7);
   weekday[0] = "SUN";
   weekday[1] = "MON";
@@ -138,12 +143,12 @@ function getDayOfWeek() {
   weekday[5] = "FRI";
   weekday[6] = "SAT";
 
-  let today = weekday[d.getDay()];
-  let day1 = weekday[d.getDay() + 1];
-  let day2 = weekday[d.getDay() + 2];
-  let day3 = weekday[d.getDay() + 3];
-  let day4 = weekday[d.getDay() + 4];
-  let day5 = weekday[d.getDay() + 5];
+  let today = weekday[day];
+  let day1 = weekday[(day + 1) % 7];
+  let day2 = weekday[(day + 2) % 7];
+  let day3 = weekday[(day + 3) % 7];
+  let day4 = weekday[(day + 4) % 7];
+  let day5 = weekday[(day + 5) % 7];
   $('.today').text(today);
   $('.day1').text(day1);
   $('.day2').text(day2);
